@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:background="#87CEEB"
+              android:orientation="vertical"
+              android:padding="16dp">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+
+    <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Password"
+            android:inputType="textPassword" />
+    <TextView
+            android:id="@+id/error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FF0000"/>
+
+    <Button
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Log In" />
+
+    <TextView
+            android:id="@+id/signup_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not registered yet? Sign up"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>
