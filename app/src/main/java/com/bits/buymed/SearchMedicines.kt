@@ -1,20 +1,26 @@
 package com.bits.buymed
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.bits.buymed.interfaces.ApiService
 import com.bits.buymed.model.StockItem
 import com.bits.buymed.model.StockListAdapter
+import com.google.android.material.navigation.NavigationView
 import org.json.JSONArray
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import androidx.appcompat.app.AlertDialog
 
 class SearchMedicines : AppCompatActivity() {
 
@@ -24,11 +30,54 @@ class SearchMedicines : AppCompatActivity() {
     private lateinit var resultListView: ListView
     private lateinit var adapter: StockListAdapter
     private lateinit var selectedItem: String
+    private lateinit var drawerLayout: DrawerLayout
 
+    private val PREFERENCES_FILE_NAME = "MyAppPreferences"
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.search_medicines)
+
+        sharedPreferences = getSharedPreferences(PREFERENCES_FILE_NAME, Context.MODE_PRIVATE)
+
+        drawerLayout = findViewById(R.id.drawer_layout)
+        val navView: NavigationView = findViewById(R.id.nav_view)
+
+        val headerView = navView.getHeaderView(0)
+
+        val usernameTextView = headerView.findViewById<TextView>(R.id.username)
+        usernameTextView.setText(sharedPreferences.getString("username", null))
+
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_profile -> {
+                    val intent = Intent(this, UserProfileActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.nav_sign_out -> {
+                    val alertDialog = AlertDialog.Builder(this)
+                        .setView(R.layout.dialog_sign_out)
+                        .setPositiveButton("Yes") { _, _ ->
+                            val editor = sharedPreferences.edit()
+                            editor.remove("username")
+                            editor.remove("password")
+                            editor.apply()
+                            finish()
+                        }
+                        .setNegativeButton("No") { dialog, _ ->
+                            dialog.dismiss() // Dismiss the dialog if "No" is clicked
+                        }
+                        .create()
+
+                    alertDialog.show()
+                }
+            }
+
+            // Close the drawer when an item is selected
+            drawerLayout.closeDrawer(GravityCompat.START)
+            true
+        }
 
         val staticItems = arrayOf("Vitamins", "paracetomal", "cough", "Nasal_Spray", "Gastric")
         val adapterCategories = ArrayAdapter(this, android.R.layout.simple_spinner_item, staticItems)

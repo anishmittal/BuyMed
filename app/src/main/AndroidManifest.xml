@@ -32,6 +32,8 @@
         <activity android:name=".SearchMedicines" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".CartScreen" />
+        <activity android:name=".UserProfileActivity" />
+        <activity android:name=".PlaceOrderScreen" />
 
 
     </application>

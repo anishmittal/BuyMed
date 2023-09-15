@@ -4,7 +4,6 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="16dp"
                 android:background="#87CEEB"
                 tools:context=".SearchMedicines">
 
@@ -12,6 +11,18 @@
             android:id="@+id/resultListView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+    />
+
+    <Button
+            android:id="@+id/placeOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Place Order"
+            android:background="#000080"
+            android:textColor="#FFFFFF"
             android:layout_marginTop="16dp"
     />
 

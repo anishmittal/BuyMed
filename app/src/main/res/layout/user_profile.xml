@@ -1,0 +1,27 @@
+<!-- activity_user_profile.xml -->
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#87CEEB"
+        android:gravity="center_horizontal">
+
+    <!-- User Profile Image -->
+    <ImageView
+            android:id="@+id/userProfileImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/profile"
+            android:layout_marginTop="32dp"/>
+
+    <!-- User Name -->
+    <TextView
+            android:id="@+id/userNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+
+</LinearLayout>

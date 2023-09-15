@@ -1,0 +1,15 @@
+<!-- res/layout/dialog_sign_out.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:padding="16dp">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Are you sure you want to sign out?"
+            android:textSize="18sp"
+            android:textColor="#000000"/>
+
+</LinearLayout>

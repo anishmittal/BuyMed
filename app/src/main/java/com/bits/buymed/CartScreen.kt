@@ -1,7 +1,8 @@
 package com.bits.buymed
 
+import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.widget.*
 import com.bits.buymed.interfaces.ApiService
@@ -24,6 +25,12 @@ class CartScreen : AppCompatActivity() {
         resultListView = findViewById(R.id.resultListView)
         adapter = CartItemsListAdapter(this, R.layout.cart_item, mutableListOf())
         resultListView.adapter = adapter
+        val placeOrderButton = findViewById<Button>(R.id.placeOrder)
+
+        placeOrderButton.setOnClickListener {
+            val intent = Intent(this, PlaceOrderScreen::class.java)
+            startActivity(intent)
+        }
 
         val retrofit = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:8000") // Replace with your API base URL
