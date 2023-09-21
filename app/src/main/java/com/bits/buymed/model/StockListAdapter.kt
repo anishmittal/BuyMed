@@ -22,6 +22,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 class StockListAdapter(context: Context, resource: Int, data: List<StockItem>) :
     ArrayAdapter<StockItem>(context, resource, data) {
 
+    val baseUrl = context.resources.getString(R.string.base_url)
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val itemView = convertView ?: inflater.inflate(R.layout.item_stock, null)
@@ -59,13 +61,13 @@ class StockListAdapter(context: Context, resource: Int, data: List<StockItem>) :
         // Replace this with your actual network call code
         // Example with Retrofit:
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8000")
+            .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val apiService = retrofit.create(ApiService::class.java)
 
-        val cartItem = CartItem(""+item?.title, ""+item?.price)
+        val cartItem = CartItem(""+item?.title, ""+item?.price, item?.quantity ?: 0)
         val call = apiService.addToCart(cartItem)
 
         call.enqueue(object : Callback<Void> {

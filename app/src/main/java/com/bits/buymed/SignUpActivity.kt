@@ -21,6 +21,7 @@ class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
+        val baseUrl = resources.getString(R.string.base_url)
 
         val signupButton = findViewById<Button>(R.id.button_sign_up)
         val editTextEmail = findViewById<EditText>(R.id.edit_text_email)
@@ -40,7 +41,7 @@ class SignUpActivity : AppCompatActivity() {
             else {
 //http://192.168.0.184:8000/
                 val retrofit = Retrofit.Builder()
-                    .baseUrl("http://10.0.2.2:8000") // Replace with your base URL
+                    .baseUrl(baseUrl) // Replace with your base URL
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
 

@@ -34,6 +34,7 @@
         <activity android:name=".CartScreen" />
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".PlaceOrderScreen" />
+        <activity android:name=".ViewOrderScreen" />
 
 
     </application>

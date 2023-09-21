@@ -29,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        val baseUrl = resources.getString(R.string.base_url)
         sharedPreferences = getSharedPreferences(PREFERENCES_FILE_NAME, Context.MODE_PRIVATE)
 
         // Add your login logic here
@@ -36,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
         signUpTextView.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         val loginButton = findViewById<Button>(R.id.loginButton)
@@ -51,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
 //            Log.d("id" ,""+id )
 
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8000") // Replace with your base URL
+                .baseUrl(baseUrl) // Replace with your base URL
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 

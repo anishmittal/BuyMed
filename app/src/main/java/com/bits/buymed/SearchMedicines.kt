@@ -38,6 +38,7 @@ class SearchMedicines : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.search_medicines)
+        val baseUrl = resources.getString(R.string.base_url)
 
         sharedPreferences = getSharedPreferences(PREFERENCES_FILE_NAME, Context.MODE_PRIVATE)
 
@@ -53,6 +54,10 @@ class SearchMedicines : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.nav_profile -> {
                     val intent = Intent(this, UserProfileActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.nav_view_order -> {
+                    val intent = Intent(this, ViewOrderScreen::class.java)
                     startActivity(intent)
                 }
                 R.id.nav_sign_out -> {
@@ -103,7 +108,7 @@ class SearchMedicines : AppCompatActivity() {
         }
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8000") // Replace with your API base URL
+            .baseUrl(baseUrl) // Replace with your API base URL
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

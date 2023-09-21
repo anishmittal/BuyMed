@@ -4,6 +4,7 @@ import com.bits.buymed.model.CartItem
 import com.bits.buymed.model.LoginRequest
 import com.bits.buymed.model.SignUpRequest
 import com.bits.buymed.model.StockItem
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -25,4 +26,7 @@ interface ApiService {
 
     @GET("/api/cartitems/")
     fun getCartItems(): Call<List<CartItem>>
+
+    @POST("/api/placeorder/")
+    fun placeOrder(@Body requestBody: RequestBody): Call<Void>
 }

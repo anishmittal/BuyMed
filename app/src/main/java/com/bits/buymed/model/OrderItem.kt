@@ -1,7 +1,8 @@
 package com.bits.buymed.model
 
-data class CartItem(
+data class OrderItem(
     val title: String,
     val price: String,
-    var quantity: Int
+    val quantity: String
 )
+

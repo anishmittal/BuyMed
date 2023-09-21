@@ -50,6 +50,7 @@ class CartItemsListAdapter(context: Context, resource: Int, data: List<CartItem>
             }
         })
 
+        item?.quantity = quantity
         return itemView
     }
 
