@@ -26,7 +26,7 @@ class ViewOrderScreen : AppCompatActivity() {
 
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url(baseUrl + "/api/vieworder/")
+            .url(baseUrl + "/api/vieworder/redirect")
             .build()
 
         client.newCall(request).enqueue(object : Callback {

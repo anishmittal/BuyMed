@@ -12,21 +12,42 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface ApiService {
-    @POST("/api/register/")
+//    @POST("/api/register/")
+//    fun signUp(@Body signUpRequest: SignUpRequest): Call<Void>
+//
+//    @POST("/api/login/")
+//    fun login(@Body loginRequest: LoginRequest): Call<Void>
+//
+//    @GET("/api/stockitems/")
+//    fun getStockItemsByCategory(@Query("category") category: String): Call<List<StockItem>>
+//
+//    @POST("/api/cartitem/add/")
+//    fun addToCart(@Body requestBody: CartItem): Call<Void>
+//
+//    @GET("/api/cartitems/")
+//    fun getCartItems(): Call<List<CartItem>>
+//
+//    @POST("/api/placeorder/")
+//    fun placeOrder(@Body requestBody: RequestBody): Call<Void>
+
+
+    //////////////////////////////////////////////////////////
+
+    @POST("/api/registerRedirect/")
     fun signUp(@Body signUpRequest: SignUpRequest): Call<Void>
 
-    @POST("/api/login/")
+    @POST("/api/loginRedirect/")
     fun login(@Body loginRequest: LoginRequest): Call<Void>
 
-    @GET("/api/stockitems/")
+    @GET("/api/stockItemsRedirect/")
     fun getStockItemsByCategory(@Query("category") category: String): Call<List<StockItem>>
 
-    @POST("/api/cartitem/add/")
+    @POST("/api/cartitem/add/redirect")
     fun addToCart(@Body requestBody: CartItem): Call<Void>
 
-    @GET("/api/cartitems/")
+    @GET("/api/cartItemsRedirect/")
     fun getCartItems(): Call<List<CartItem>>
 
-    @POST("/api/placeorder/")
+    @POST("/api/placeorder/redirect")
     fun placeOrder(@Body requestBody: RequestBody): Call<Void>
 }
